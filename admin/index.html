@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — KnownLabs</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #f4f4f6;
+        --ink: #141417;
+        --muted: #6b6e76;
+        --line: rgba(20, 20, 25, 0.1);
+        --accent: #4f46e5;
+        --accent2: #7c3aed;
+        --ok: #16a34a;
+        --warn: #d97706;
+        --bad: #dc2626;
+        --card: #fff;
+        --r: 16px;
+      }
+      body {
+        font-family: "Onest", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      .hidden {
+        display: none !important;
+      }
+      /* login */
+      .login-wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(79, 70, 229, 0.12),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(245, 158, 11, 0.08),
+            transparent 50%
+          );
+      }
+      .login-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 48px 44px;
+        width: min(420px, 100%);
+        box-shadow: 0 24px 70px rgba(20, 20, 25, 0.12);
+        text-align: center;
+      }
+      .login-card img {
+        height: 56px;
+        margin-bottom: 18px;
+      }
+      .login-card h1 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 6px;
+      }
+      .login-card p {
+        color: var(--muted);
+        font-size: 0.94rem;
+        margin-bottom: 28px;
+      }
+      /* shell */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 28px;
+      }
+      .topbar .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+      }
+      .topbar .brand img {
+        height: 32px;
+      }
+      .topbar .who {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 230px 1fr;
+        min-height: calc(100vh - 61px);
+      }
+      .side {
+        border-right: 1px solid var(--line);
+        padding: 24px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        background: #fafafb;
+      }
+      .side button {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 0.94rem;
+        font-weight: 500;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .side button:hover {
+        background: rgba(79, 70, 229, 0.07);
+        color: var(--ink);
+      }
+      .side button.active {
+        background: linear-gradient(120deg, var(--accent2), var(--accent));
+        color: #fff;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+      }
+      .side button .cnt {
+        margin-left: auto;
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 999px;
+        padding: 2px 10px;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .side button.active .cnt {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      .main {
+        padding: 32px;
+        max-width: 1100px;
+      }
+      .main h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+      }
+      .main .sub {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+      /* stats */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .stat {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        padding: 22px;
+      }
+      .stat .n {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+      .stat .l {
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 500;
+      }
+      /* tables */
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .toolbar .spacer {
+        flex: 1;
+      }
+      .chipbtn {
+        border: 1.5px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 9px 18px;
+        font-family: inherit;
+        font-size: 0.86rem;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .chipbtn.active {
+        background: var(--ink);
+        color: #fff;
+        border-color: var(--ink);
+      }
+      .tablewrap {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--r);
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(20, 20, 25, 0.05);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      th {
+        text-align: left;
+        padding: 14px 18px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-bottom: 1px solid var(--line);
+        background: #fafafb;
+      }
+      td {
+        padding: 15px 18px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      tr:hover td {
+        background: #fafafe;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 999px;
+        letter-spacing: 0.04em;
+      }
+      .b-new {
+        background: rgba(79, 70, 229, 0.12);
+        color: var(--accent);
+      }
+      .b-read {
+        background: rgba(107, 114, 128, 0.12);
+        color: #4b5563;
+      }
+      .b-replied {
+        background: rgba(22, 163, 74, 0.12);
+        color: var(--ok);
+      }
+      .b-archived {
+        background: rgba(0, 0, 0, 0.06);
+        color: var(--muted);
+      }
+      .b-pub {
+        background: rgba(22, 163, 74, 0.12);
+        color: var(--ok);
+      }
+      .b-draft {
+        background: rgba(217, 119, 6, 0.12);
+        color: var(--warn);
+      }
+      /* buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 0.88rem;
+        padding: 11px 22px;
+        border-radius: 999px;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: linear-gradient(120deg, var(--accent2), var(--accent));
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+      .btn-dark2 {
+        background: var(--ink);
+        color: #fff;
+      }
+      .btn-ghost {
+        background: #fff;
+        border: 1.5px solid var(--line);
+        color: var(--ink);
+      }
+      .btn-danger {
+        background: rgba(220, 38, 38, 0.1);
+        color: var(--bad);
+      }
+      .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+      }
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: wait;
+        transform: none;
+      }
+      /* modal */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 15, 20, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal {
+        background: #fff;
+        border-radius: 22px;
+        width: min(620px, 100%);
+        max-height: 90vh;
+        overflow: auto;
+        padding: 36px;
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+      }
+      .modal h3 {
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+      .field {
+        margin-bottom: 16px;
+      }
+      .field label {
+        display: block;
+        font-size: 0.84rem;
+        font-weight: 600;
+        margin-bottom: 7px;
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1.5px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 14px;
+        font-size: 0.94rem;
+        font-family: inherit;
+        background: #fafafb;
+      }
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        background: #fff;
+      }
+      .field textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .field .hint {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .modal .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 24px;
+      }
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.92rem;
+        font-weight: 500;
+      }
+      .check input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--accent);
+      }
+      /* images */
+      .imggrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+      }
+      .imgcard {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .imgcard img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        display: block;
+        background: #eee;
+      }
+      .imgcard .meta {
+        padding: 10px 12px;
+      }
+      .imgcard .meta button {
+        width: 100%;
+      }
+      .drop {
+        border: 2px dashed var(--line);
+        border-radius: var(--r);
+        padding: 36px;
+        text-align: center;
+        color: var(--muted);
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: #fff;
+      }
+      .drop:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .empty {
+        padding: 60px 20px;
+        text-align: center;
+        color: var(--muted);
+      }
+      .toast {
+        position: fixed;
+        bottom: 26px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--ink);
+        color: #fff;
+        padding: 14px 26px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 60;
+        pointer-events: none;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .notice {
+        background: rgba(217, 119, 6, 0.08);
+        border: 1px solid rgba(217, 119, 6, 0.3);
+        color: #92400e;
+        border-radius: 14px;
+        padding: 18px 20px;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .notice code {
+        background: rgba(0, 0, 0, 0.06);
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-size: 0.85em;
+      }
+      @media (max-width: 860px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .side {
+          flex-direction: row;
+          overflow-x: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+          padding: 12px;
+        }
+        .side button {
+          white-space: nowrap;
+        }
+        .stats {
+          grid-template-columns: 1fr 1fr;
+        }
+        .main {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <div class="login-wrap" id="login-view">
+      <div class="login-card">
+        <img src="../assets/img/logo-k.png" alt="KnownLabs" />
+        <h1>KnownLabs Admin</h1>
+        <p>Sign in to manage inquiries, projects &amp; content.</p>
+        <div class="notice hidden" id="login-notice"></div>
+        <form id="login-form">
+          <div class="field" style="text-align: left">
+            <label>Email</label
+            ><input
+              type="email"
+              id="login-email"
+              required
+              placeholder="you@knownlabs.com"
+              autocomplete="username"
+            />
+          </div>
+          <div class="field" style="text-align: left">
+            <label>Password</label
+            ><input
+              type="password"
+              id="login-pass"
+              required
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+          </div>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            style="width: 100%; justify-content: center"
+            id="login-btn"
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- APP -->
+    <div class="hidden" id="app-view">
+      <div class="topbar">
+        <div class="brand">
+          <img src="../assets/img/logo-k.png" alt="" /> KnownLabs
+          <span style="color: var(--muted); font-weight: 500">/ Admin</span>
+        </div>
+        <div class="who">
+          <span id="admin-email"></span
+          ><button class="btn btn-ghost btn-sm" id="logout-btn">
+            Sign out
+          </button>
+        </div>
+      </div>
+      <div class="layout">
+        <div class="side" id="tabs"></div>
+        <div class="main" id="main"></div>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="overlay">
+      <div class="modal" id="modal"></div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../assets/js/supabase-client.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        const $ = (s) => document.querySelector(s),
+          $$ = (s) => [...document.querySelectorAll(s)];
+        const esc = (s) =>
+          String(s == null ? "" : s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        let sb = null,
+          session = null,
+          currentTab = "dashboard",
+          cache = {};
+
+        function toast(msg) {
+          const t = $("#toast");
+          t.textContent = msg;
+          t.classList.add("show");
+          clearTimeout(t._h);
+          t._h = setTimeout(() => t.classList.remove("show"), 2600);
+        }
+        function openModal(html) {
+          $("#modal").innerHTML = html;
+          $("#overlay").classList.remove("hidden");
+        }
+        function closeModal() {
+          $("#overlay").classList.add("hidden");
+        }
+        $("#overlay").addEventListener("click", (e) => {
+          if (e.target.id === "overlay") closeModal();
+        });
+
+        /* ---------- boot ---------- */
+        async function boot() {
+          if (!KL.config.supabaseUrl || !KL.config.supabaseKey) {
+            const n = $("#login-notice");
+            n.classList.remove("hidden");
+            n.innerHTML =
+              "Supabase is not configured yet. Open <code>assets/js/supabase-client.js</code> and paste your project URL + anon key (see <code>supabase/SETUP.md</code>), then reload.";
+            $("#login-form").style.display = "none";
+            return;
+          }
+          sb = supabase.createClient(
+            KL.config.supabaseUrl,
+            KL.config.supabaseKey,
+          );
+          const { data } = await sb.auth.getSession();
+          if (data.session) {
+            session = data.session;
+            enter();
+          }
+          sb.auth.onAuthStateChange((_e, s) => {
+            if (s && !session) {
+              session = s;
+              enter();
+            }
+            if (!s && session) {
+              session = null;
+              location.reload();
+            }
+          });
+        }
+        $("#login-form").addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const b = $("#login-btn");
+          b.disabled = true;
+          b.textContent = "Signing in…";
+          const { data, error } = await sb.auth.signInWithPassword({
+            email: $("#login-email").value.trim(),
+            password: $("#login-pass").value,
+          });
+          if (error) {
+            toast("Sign in failed: " + error.message);
+            b.disabled = false;
+            b.textContent = "Sign in";
+            return;
+          }
+          session = data.session;
+          enter();
+        });
+        $("#logout-btn").addEventListener("click", async () => {
+          await sb.auth.signOut();
+          location.reload();
+        });
+        async function enter() {
+          const { data: ok, error: rpcErr } = await sb.rpc("is_admin");
+          if (rpcErr || !ok) {
+            const email = session ? session.user.email : "";
+            await sb.auth.signOut();
+            session = null;
+            $("#login-view").classList.remove("hidden");
+            $("#app-view").classList.add("hidden");
+            const n = $("#login-notice");
+            n.classList.remove("hidden");
+            n.innerHTML =
+              "This login is not on the admin allowlist. Ask the site owner to run:<br><code>insert into public.admin_users (user_id) select id from auth.users where email = '" +
+              esc(email) +
+              "';</code>";
+            $("#login-form").style.display = "";
+            return;
+          }
+          $("#login-view").classList.add("hidden");
+          $("#app-view").classList.remove("hidden");
+          $("#admin-email").textContent = session.user.email;
+          renderTabs();
+          showTab("dashboard");
+        }
+
+        /* ---------- tabs ---------- */
+        const TABS = [
+          ["dashboard", "📊 Dashboard"],
+          ["inquiries", "✉️ Inquiries", "inquiries"],
+          ["projects", "🗂 Projects"],
+          ["services", "⚙️ Services"],
+          ["testimonials", "⭐ Testimonials"],
+          ["faqs", "❓ FAQs"],
+          ["images", "🖼 Images"],
+        ];
+        function renderTabs() {
+          $("#tabs").innerHTML = TABS.map(([id, label, countKey]) => {
+            const c =
+              countKey && cache[countKey + "_new"]
+                ? `<span class="cnt">${cache[countKey + "_new"]}</span>`
+                : "";
+            return `<button data-tab="${id}" class="${id === currentTab ? "active" : ""}">${label}${c}</button>`;
+          }).join("");
+          $$("#tabs button").forEach(
+            (b) => (b.onclick = () => showTab(b.dataset.tab)),
+          );
+        }
+        function showTab(id) {
+          currentTab = id;
+          renderTabs();
+          ({
+            dashboard: viewDashboard,
+            inquiries: viewInquiries,
+            projects: viewProjects,
+            services: viewServices,
+            testimonials: viewTestimonials,
+            faqs: viewFaqs,
+            images: viewImages,
+          })[id]();
+        }
+
+        /* ---------- data helpers ---------- */
+        async function q(table, opts = {}) {
+          let r = sb.from(table).select("*");
+          if (opts.eq)
+            for (const [k, v] of Object.entries(opts.eq)) r = r.eq(k, v);
+          if (opts.order)
+            r = r.order(opts.order, { ascending: opts.asc !== false });
+          if (opts.limit) r = r.limit(opts.limit);
+          const { data, error } = await r;
+          if (error) throw error;
+          return data;
+        }
+        async function del(table, id) {
+          if (!confirm("Delete this item? This cannot be undone.")) return;
+          const { error } = await sb.from(table).delete().eq("id", id);
+          if (error) return toast("Delete failed: " + error.message);
+          toast("Deleted.");
+          showTab(currentTab);
+        }
+        function badge(st) {
+          return `<span class="badge b-${st}">${esc(st)}</span>`;
+        }
+        function pubBadge(p) {
+          return p
+            ? `<span class="badge b-pub">published</span>`
+            : `<span class="badge b-draft">draft</span>`;
+        }
+        function fmtDate(d) {
+          return new Date(d).toLocaleString("en-IN", {
+            day: "numeric",
+            month: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        }
+
+        /* ---------- dashboard ---------- */
+        async function viewDashboard() {
+          const m = $("#main");
+          m.innerHTML =
+            "<h2>Dashboard</h2><p class='sub'>Overview of your website.</p><div class='empty'>Loading…</div>";
+          try {
+            const [inq, proj, svc, tst] = await Promise.all([
+              q("inquiries", { order: "created_at", asc: false, limit: 1000 }),
+              q("projects", { order: "sort_order" }),
+              q("services", { order: "sort_order" }),
+              q("testimonials", { order: "sort_order" }),
+            ]);
+            cache.inquiries_new = inq.filter((i) => i.status === "new").length;
+            const recent = inq.slice(0, 5);
+            m.innerHTML = `<h2>Dashboard</h2><p class="sub">Overview of your website.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">${cache.inquiries_new}</div><div class="l">New inquiries</div></div>
+      <div class="stat"><div class="n">${inq.length}</div><div class="l">Total inquiries</div></div>
+      <div class="stat"><div class="n">${proj.filter((p) => p.is_published).length}</div><div class="l">Published projects</div></div>
+      <div class="stat"><div class="n">${tst.filter((t) => t.is_published).length}</div><div class="l">Published testimonials</div></div>
+    </div>
+    <h2 style="font-size:1.15rem;margin-bottom:14px">Latest inquiries</h2>
+    <div class="tablewrap"><table><tr><th>Name</th><th>Service</th><th>Status</th><th>Received</th></tr>
+    ${recent.map((i) => `<tr><td><strong>${esc(i.name)}</strong><br><span style="color:var(--muted);font-size:.82rem">${esc(i.email)}</span></td><td>${esc(i.service || "—")}</td><td>${badge(i.status)}</td><td style="white-space:nowrap">${fmtDate(i.created_at)}</td></tr>`).join("") || '<tr><td colspan="4" class="empty">No inquiries yet.</td></tr>'}
+    </table></div>
+    <div style="margin-top:16px"><button class="btn btn-ghost" onclick="document.querySelector('[data-tab=inquiries]').click()">View all inquiries →</button></div>`;
+            renderTabs();
+          } catch (e) {
+            m.innerHTML =
+              "<h2>Dashboard</h2><div class='notice'>Could not load data: " +
+              esc(e.message) +
+              ". Check your Supabase tables (run <code>supabase/schema.sql</code>).</div>";
+          }
+        }
+
+        /* ---------- inquiries ---------- */
+        let inqFilter = "all";
+        async function viewInquiries() {
+          const m = $("#main");
+          m.innerHTML = `<h2>Inquiries</h2><p class="sub">Messages from your contact form.</p>
+  <div class="toolbar" id="inq-filters">
+    ${["all", "new", "read", "replied", "archived"].map((f) => `<button class="chipbtn ${f === inqFilter ? "active" : ""}" data-f="${f}">${f[0].toUpperCase() + f.slice(1)}</button>`).join("")}
+  </div><div class="tablewrap" id="inq-table"><div class="empty">Loading…</div></div>`;
+          $$("#inq-filters .chipbtn").forEach(
+            (b) =>
+              (b.onclick = () => {
+                inqFilter = b.dataset.f;
+                viewInquiries();
+              }),
+          );
+          try {
+            const rows = await q("inquiries", {
+              order: "created_at",
+              asc: false,
+            });
+            const list = rows.filter(
+              (r) => inqFilter === "all" || r.status === inqFilter,
+            );
+            $("#inq-table").innerHTML =
+              `<table><tr><th>Name</th><th>Contact</th><th>Service</th><th>Status</th><th>Received</th><th></th></tr>
+    ${
+      list
+        .map(
+          (i) => `<tr>
+      <td><strong>${esc(i.name)}</strong></td>
+      <td><span style="font-size:.85rem">${esc(i.email)}<br>${esc(i.phone || "")}</span></td>
+      <td>${esc(i.service || "—")}</td><td>${badge(i.status)}</td>
+      <td style="white-space:nowrap;font-size:.85rem">${fmtDate(i.created_at)}</td>
+      <td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" data-view="${i.id}">View</button>
+      <button class="btn btn-danger btn-sm" data-del="${i.id}">Delete</button></td></tr>`,
+        )
+        .join("") ||
+      '<tr><td colspan="6" class="empty">No inquiries here.</td></tr>'
+    }</table>`;
+            $$("#inq-table [data-view]").forEach(
+              (b) => (b.onclick = () => viewInquiry(b.dataset.view)),
+            );
+            $$("#inq-table [data-del]").forEach(
+              (b) =>
+                (b.onclick = async () => {
+                  await del("inquiries", b.dataset.del);
+                }),
+            );
+          } catch (e) {
+            $("#inq-table").innerHTML =
+              "<div class='notice'>" + esc(e.message) + "</div>";
+          }
+        }
+        async function viewInquiry(id) {
+          const [i] = await q("inquiries", { eq: { id } });
+          if (i.status === "new") {
+            await sb.from("inquiries").update({ status: "read" }).eq("id", id);
+            i.status = "read";
+          }
+          openModal(`<h3>Inquiry from ${esc(i.name)}</h3>
+    <div class="field"><label>Contact</label><div>${esc(i.email)}${i.phone ? " · " + esc(i.phone) : ""}</div></div>
+    <div class="field"><label>Service</label><div>${esc(i.service || "—")}</div></div>
+    <div class="field"><label>Message</label><div style="background:#fafafb;border:1px solid var(--line);border-radius:12px;padding:14px;white-space:pre-wrap">${esc(i.message)}</div></div>
+    <div class="field"><label>Received</label><div>${fmtDate(i.created_at)}</div></div>
+    <div class="field"><label>Status</label><select id="m-status">
+      ${["new", "read", "replied", "archived"].map((s) => `<option ${s === i.status ? "selected" : ""}>${s}</option>`).join("")}</select></div>
+    <div class="actions">
+      ${i.phone ? `<a class="btn btn-dark2" target="_blank" href="https://wa.me/${esc(i.phone.replace(/[^0-9]/g, ""))}">Reply on WhatsApp</a>` : ""}
+      <button class="btn btn-ghost" onclick="document.querySelector('#overlay').classList.add('hidden')">Close</button>
+      <button class="btn btn-primary" id="m-save">Save status</button></div>`);
+          $("#m-save").onclick = async () => {
+            const { error } = await sb
+              .from("inquiries")
+              .update({ status: $("#m-status").value })
+              .eq("id", id);
+            if (error) return toast("Save failed: " + error.message);
+            closeModal();
+            toast("Status updated.");
+            viewInquiries();
+          };
+        }
+        /* ---------- generic content CRUD ---------- */
+        const SCHEMAS = {
+          projects: {
+            label: "Projects",
+            cols: [
+              "title",
+              "categories",
+              "live_url",
+              "is_published",
+              "sort_order",
+            ],
+            fields: [
+              ["title", "Title", "text", 1],
+              ["slug", "Slug (auto if empty)", "text", 0],
+              ["description", "Description", "textarea", 1],
+              ["categories", "Categories (one per line)", "list", 0],
+              ["image_url", "Image URL", "url", 0],
+              ["live_url", "Live site URL", "url", 0],
+              ["deliverables", "Deliverables (one per line)", "list", 0],
+              ["sort_order", "Sort order", "number", 0],
+              ["is_published", "Published", "check", 0],
+            ],
+          },
+          services: {
+            label: "Services",
+            cols: ["title", "slug", "is_published", "sort_order"],
+            fields: [
+              ["title", "Title", "text", 1],
+              ["slug", "Slug (auto if empty)", "text", 0],
+              ["description", "Description", "textarea", 1],
+              ["deliverables", "Deliverables (one per line)", "list", 0],
+              ["sort_order", "Sort order", "number", 0],
+              ["is_published", "Published", "check", 0],
+            ],
+          },
+          testimonials: {
+            label: "Testimonials",
+            cols: ["name", "company", "rating", "is_published", "sort_order"],
+            fields: [
+              ["name", "Client name", "text", 1],
+              ["role", "Role", "text", 0],
+              ["company", "Company", "text", 0],
+              ["quote", "Testimonial", "textarea", 1],
+              ["rating", "Rating (1–5)", "number", 0],
+              ["sort_order", "Sort order", "number", 0],
+              ["is_published", "Published", "check", 0],
+            ],
+          },
+          faqs: {
+            label: "FAQs",
+            cols: ["question", "is_published", "sort_order"],
+            fields: [
+              ["question", "Question", "text", 1],
+              ["answer", "Answer", "textarea", 1],
+              ["sort_order", "Sort order", "number", 0],
+              ["is_published", "Published", "check", 0],
+            ],
+          },
+        };
+        function slugify(s) {
+          return String(s || "")
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+        }
+        function cellVal(table, col, v) {
+          if (col === "is_published") return pubBadge(v);
+          if (col === "categories" || col === "deliverables")
+            return esc((v || []).join(", "));
+          if (col === "live_url" || col === "image_url")
+            return v
+              ? `<a href="${esc(v)}" target="_blank" rel="noopener" style="color:var(--accent)">link ↗</a>`
+              : "—";
+          if (col === "title" || col === "question" || col === "name")
+            return `<strong>${esc(v)}</strong>`;
+          return esc(v == null || v === "" ? "—" : v);
+        }
+        async function viewCollection(table) {
+          const S = SCHEMAS[table],
+            m = $("#main");
+          m.innerHTML = `<h2>${S.label}</h2><p class="sub">Manage ${S.label.toLowerCase()} shown on the website.</p>
+  <div class="toolbar"><div class="spacer"></div><button class="btn btn-primary" id="add-btn">+ Add ${S.label.slice(0, -1)}</button></div>
+  <div class="tablewrap" id="c-table"><div class="empty">Loading…</div></div>`;
+          $("#add-btn").onclick = () => editItem(table, null);
+          try {
+            const rows = await q(table, { order: "sort_order" });
+            $("#c-table").innerHTML =
+              `<table><tr>${S.cols.map((c) => `<th>${c.replace(/_/g, " ")}</th>`).join("")}<th></th></tr>
+    ${
+      rows
+        .map(
+          (
+            r,
+          ) => `<tr>${S.cols.map((c) => `<td>${cellVal(table, c, r[c])}</td>`).join("")}
+      <td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" data-edit="${r.id}">Edit</button>
+      <button class="btn btn-danger btn-sm" data-del2="${r.id}">Delete</button></td></tr>`,
+        )
+        .join("") ||
+      `<tr><td colspan="${S.cols.length + 1}" class="empty">Nothing here yet — add your first one.</td></tr>`
+    }</table>`;
+            $$("#c-table [data-edit]").forEach(
+              (b) => (b.onclick = () => editItem(table, b.dataset.edit)),
+            );
+            $$("#c-table [data-del2]").forEach(
+              (b) =>
+                (b.onclick = async () => {
+                  await del(table, b.dataset.del2);
+                }),
+            );
+          } catch (e) {
+            $("#c-table").innerHTML =
+              "<div class='notice'>" + esc(e.message) + "</div>";
+          }
+        }
+        function fieldHtml(f, val) {
+          const [key, label, type] = f;
+          if (type === "textarea")
+            return `<div class="field"><label>${label}</label><textarea id="f-${key}">${esc(val || "")}</textarea></div>`;
+          if (type === "list")
+            return `<div class="field"><label>${label}</label><textarea id="f-${key}" style="min-height:80px">${esc((val || []).join("\n"))}</textarea></div>`;
+          if (type === "check")
+            return `<div class="field"><label class="check"><input type="checkbox" id="f-${key}" ${val ? "checked" : ""}> ${label}</label></div>`;
+          if (type === "number")
+            return `<div class="field"><label>${label}</label><input type="number" id="f-${key}" value="${val == null ? 0 : val}"></div>`;
+          return `<div class="field"><label>${label}</label><input type="${type}" id="f-${key}" value="${esc(val || "")}"></div>`;
+        }
+        async function editItem(table, id) {
+          const S = SCHEMAS[table];
+          let row = {};
+          if (id) {
+            const r = await q(table, { eq: { id } });
+            row = r[0] || {};
+          }
+          openModal(`<h3>${id ? "Edit" : "Add"} ${S.label.slice(0, -1)}</h3>
+    ${S.fields.map((f) => fieldHtml(f, row[f[0]])).join("")}
+    <div class="actions"><button class="btn btn-ghost" id="m-cancel">Cancel</button>
+    <button class="btn btn-primary" id="m-save2">${id ? "Save changes" : "Add"}</button></div>`);
+          $("#m-cancel").onclick = closeModal;
+          $("#m-save2").onclick = async () => {
+            const payload = {};
+            for (const [key, label, type, req] of S.fields) {
+              const el = $("#f-" + key);
+              let v =
+                type === "check"
+                  ? el.checked
+                  : type === "number"
+                    ? parseInt(el.value || "0", 10)
+                    : el.value.trim();
+              if (type === "list")
+                v = el.value
+                  .split("\n")
+                  .map((s) => s.trim())
+                  .filter(Boolean);
+              if (req && !v && v !== 0) return toast(label + " is required.");
+              payload[key] = v;
+            }
+            if ("slug" in payload && !payload.slug && payload.title)
+              payload.slug = slugify(payload.title);
+            let error;
+            if (id)
+              ({ error } = await sb.from(table).update(payload).eq("id", id));
+            else ({ error } = await sb.from(table).insert([payload]));
+            if (error) return toast("Save failed: " + error.message);
+            closeModal();
+            toast("Saved.");
+            viewCollection(table);
+          };
+        }
+        function viewProjects() {
+          viewCollection("projects");
+        }
+        function viewServices() {
+          viewCollection("services");
+        }
+        function viewTestimonials() {
+          viewCollection("testimonials");
+        }
+        function viewFaqs() {
+          viewCollection("faqs");
+        }
+
+        /* ---------- images ---------- */
+        const BUCKET = "site-images";
+        async function viewImages() {
+          const m = $("#main");
+          m.innerHTML = `<h2>Images</h2><p class="sub">Upload images, then paste the URL into projects or content. Bucket: <code>${BUCKET}</code></p>
+  <div class="drop" id="drop">📤 Click to upload an image <div style="font-size:.82rem;margin-top:6px">PNG / JPG / WebP — stored in Supabase Storage</div></div>
+  <input type="file" id="filepick" accept="image/*" class="hidden">
+  <div class="imggrid" id="imggrid"><div class="empty">Loading…</div></div>`;
+          $("#drop").onclick = () => $("#filepick").click();
+          $("#filepick").onchange = (e) => {
+            if (e.target.files[0]) uploadImg(e.target.files[0]);
+          };
+          await listImages();
+        }
+        async function listImages() {
+          const g = $("#imggrid");
+          try {
+            const { data, error } = await sb.storage
+              .from(BUCKET)
+              .list("", {
+                limit: 100,
+                sortBy: { column: "created_at", order: "desc" },
+              });
+            if (error) throw error;
+            const files = (data || []).filter(
+              (f) => f.name !== ".emptyFolderPlaceholder",
+            );
+            if (!files.length) {
+              g.innerHTML =
+                "<div class='empty'>No images yet — upload your first one above.</div>";
+              return;
+            }
+            g.innerHTML = files
+              .map((f) => {
+                const { data: u } = sb.storage
+                  .from(BUCKET)
+                  .getPublicUrl(f.name);
+                const url = u.publicUrl;
+                return `<div class="imgcard"><img src="${esc(url)}" loading="lazy" alt="">
+        <div class="meta"><div style="font-size:.8rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:8px">${esc(f.name)}</div>
+        <div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" data-copy="${esc(url)}">Copy URL</button>
+        <button class="btn btn-danger btn-sm" data-rm="${esc(f.name)}">Delete</button></div></div></div>`;
+              })
+              .join("");
+            $$("#imggrid [data-copy]").forEach(
+              (b) =>
+                (b.onclick = () => {
+                  navigator.clipboard.writeText(b.dataset.copy);
+                  toast("URL copied.");
+                }),
+            );
+            $$("#imggrid [data-rm]").forEach(
+              (b) =>
+                (b.onclick = async () => {
+                  if (!confirm("Delete this image?")) return;
+                  const { error } = await sb.storage
+                    .from(BUCKET)
+                    .remove([b.dataset.rm]);
+                  if (error) return toast("Delete failed: " + error.message);
+                  toast("Deleted.");
+                  listImages();
+                }),
+            );
+          } catch (e) {
+            g.innerHTML =
+              "<div class='notice'>" +
+              esc(e.message) +
+              "<br>Create the <code>" +
+              BUCKET +
+              "</code> bucket in Supabase Storage (see SETUP.md).</div>";
+          }
+        }
+        async function uploadImg(file) {
+          toast("Uploading…");
+          const name =
+            Date.now() + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+          const { error } = await sb.storage
+            .from(BUCKET)
+            .upload(name, file, { upsert: false });
+          if (error) return toast("Upload failed: " + error.message);
+          toast("Uploaded.");
+          $("#filepick").value = "";
+          listImages();
+        }
+
+        boot();
+      })();
+    </script>
+  </body>
+</html>
