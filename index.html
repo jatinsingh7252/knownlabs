@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("kl-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+<title>KnownLabs — We design & build digital brands that get Known</title>
+<meta name="description" content="KnownLabs is a full-stack digital agency — websites, apps, UI/UX, SEO, social media & video editing, all under one roof.">
+<link rel="icon" type="image/png" href="assets/img/logo-k-white.png" alt="KnownLabs icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="site" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="KnownLabs home">
+      <img class="logo logo-l" src="assets/img/logo-k.png" alt="KnownLabs logo">
+      <img class="logo logo-d" src="assets/img/logo-k-white.png" alt="KnownLabs logo" aria-hidden="true">
+      <span>Known<span class="labs">Labs</span><span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="nav-link spy-active" href="index.html">Home</a></li>
+      <li><a class="nav-link" href="about.html">About Us</a></li>
+      <li><a class="nav-link" href="services.html">Services</a></li>
+      <li><a class="nav-link" href="projects.html">Projects</a></li>
+      <li><a class="nav-link" href="founder.html">Founder</a></li>
+      <li><a class="nav-link" href="faq.html">FAQ</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">Let&apos;s Talk</a>
+      <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mmenu" id="mmenu">
+  <button class="close" id="mclose" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="services.html">Services</a>
+  <a href="projects.html">Projects</a>
+  <a href="founder.html">Founder</a>
+  <a href="faq.html">FAQ</a>
+  <a href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener" style="color:var(--amber)">Let's Talk →</a>
+</div>
+
+<!-- ============ HERO — light studio ============ -->
+<header class="hlite" id="home">
+  <div class="wrap hlite-inner">
+    <div class="kicker reveal">KnownLabs — Digital Agency, Bengaluru</div>
+    <h1 class="reveal">We build brands that get <span class="it">Known.</span></h1>
+    <p class="lede reveal">One senior team for <strong>websites, apps, UI/UX, SEO, social media &amp; video editing</strong> designed, built, and grown under one roof. No juggling freelancers, no chaos, no compromises.</p>
+    <div class="hlite-ctas reveal">
+      <a class="btn btn-primary" href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">Start a Project <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      <a class="btn btn-ghost" href="#work">See our work</a>
+    </div>
+    <div class="hlite-stats reveal">
+      <div class="hstat"><b><span class="count" data-count="6">0</span></b><span>Services under one roof</span></div>
+      <div class="hstat"><b><span class="count" data-count="2">0</span><i>+</i></b><span>Live client projects</span></div>
+      <div class="hstat"><b>1</b><span>Partner from idea to launch</span></div>
+      <div class="hstat"><b><span class="count" data-count="100">0</span><i>%</i></b><span>Custom-built design</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Web Development <i>✦</i> UI/UX Design <i>✦</i> App Development <i>✦</i> SEO <i>✦</i> Social Media <i>✦</i> Video Editing <i>✦</i> Branding <i>✦</i></span>
+    <span>Web Development <i>✦</i> UI/UX Design <i>✦</i> App Development <i>✦</i> SEO <i>✦</i> Social Media <i>✦</i> Video Editing <i>✦</i> Branding <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ============ SERVICES — the menu ============ -->
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">What we do</div>
+      <h2>Six crafts, <span class="grad">one roof.</span></h2>
+      <p>Pick a single service or hand us the whole journey — every row below opens the full playbook.</p>
+    </div>
+    <div data-services="menu" data-limit="3">
+      <div class="menulist reveal">
+        <a class="menurow" href="services.html"><span class="mnum">01</span><span class="mtitle">Website Development</span><span class="mdesc">Fast, responsive, SEO-ready websites — designed and built end to end.</span><span class="marrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="menurow" href="services.html"><span class="mnum">02</span><span class="mtitle">UI/UX Design</span><span class="mdesc">Interfaces that look sharp and feel effortless — researched, wireframed, and polished.</span><span class="marrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="menurow" href="services.html"><span class="mnum">03</span><span class="mtitle">App Development</span><span class="mdesc">Mobile apps that launch clean and scale — from idea to app store.</span><span class="marrow"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+      </div>
+    </div>
+    <div class="center-row reveal"><a class="btn btn-ghost" href="services.html">View all services <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ============ WORK — features ============ -->
+<section class="block" id="work" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">Selected Work</div>
+      <h2>Work we're <span class="grad">proud of.</span></h2>
+      <p>Real projects for real businesses — each one crafted end to end.</p>
+    </div>
+    <div data-projects="feature">
+      <article class="feat reveal">
+        <div class="fcol">
+          <div class="work-tags"><span>Website Development</span><span>UI/UX</span><span>Healthcare</span></div>
+          <div class="fmedia">
+            <img src="assets/img/proj-madhukar.png" alt="Madhukar Clinic & Lung Hospital website">
+          </div>
+        </div>
+        <div class="fbody">
+          <div class="kicker">Case 01</div>
+          <h3>Madhukar Clinic &amp; Lung Hospital</h3>
+          <p>A clear, trustworthy web presence for a lung hospital and clinic — designed so patients can find the right information and reach out with zero friction.</p>
+          <ul class="fdelivs">
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Responsive website — designed and built end to end</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Patient-first UI/UX with clear navigation and calls to action</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>SEO-friendly structure and on-page basics</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Fast, mobile-first performance</li>
+          </ul>
+          <div class="fmeta">
+            <a class="work-link" href="https://www.madhukarlunghospital.com" target="_blank" rel="noopener">Visit live site <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            <a class="work-link" href="projects.html">More work <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </article>
+      <article class="feat flip reveal">
+        <div class="fcol">
+          <div class="work-tags"><span>Website Development</span><span>UI/UX</span><span>Non-profit</span></div>
+          <div class="fmedia">
+            <img src="assets/img/proj-airvana.png" alt="Airvana Foundation website">
+          </div>
+        </div>
+        <div class="fbody">
+          <div class="kicker">Case 02</div>
+          <h3>Airvana Foundation</h3>
+          <p>A warm, credible website for a foundation — communicating its mission and impact while making it effortless for visitors to connect and contribute.</p>
+          <ul class="fdelivs">
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Responsive website — designed and built end to end</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Mission-led UI/UX with storytelling-first layouts</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>SEO-friendly structure and on-page basics</li>
+            <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Fast, mobile-first performance</li>
+          </ul>
+          <div class="fmeta">
+            <a class="work-link" href="https://www.airvanafoundation.com" target="_blank" rel="noopener">Visit live site <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            <a class="work-link" href="projects.html">More work <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="center-row reveal"><a class="btn btn-ghost" href="projects.html">View all projects <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ============ WHY KNOWNLABS — dark band ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="darkband reveal">
+      <div class="kicker">Why KnownLabs</div>
+      <h2>One partner. <span style="color:var(--amber)">Zero chaos.</span></h2>
+      <p>Most businesses juggle a designer here, a developer there, and a marketer somewhere else. We replace that mess with one senior team that owns your entire digital presence.</p>
+      <div class="wdiff">
+        <div class="wdiff-item reveal"><b><i>01</i>Designed &amp; built together</b><p>Design, technology, and growth are planned as one system from day one — never bolted on afterwards.</p></div>
+        <div class="wdiff-item reveal"><b><i>02</i>Founder-led, senior only</b><p>You work directly with the founder. No account managers, no juniors learning on your budget.</p></div>
+        <div class="wdiff-item reveal"><b><i>03</i>Built to convert</b><p>Pretty is table stakes. Every page is engineered around one question: does it move your business forward?</p></div>
+        <div class="wdiff-item reveal"><b><i>04</i>Honest &amp; transparent</b><p>Clear quotes, realistic timelines, straight answers. If something won't work for you, we say so upfront.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER AGENCIES vs KNOWNLABS ============ -->
+<section class="block" id="compare">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">The difference</div>
+      <h2>Other agencies vs <span class="grad">KnownLabs.</span></h2>
+      <p>An honest side-by-side — so you know exactly what you're choosing.</p>
+    </div>
+    <div class="diff">
+      <div class="diff-card bad reveal">
+        <h3>Typical agencies</h3>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Template-based sites that look like everyone else's</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span>A designer, a developer and a marketer who've never met</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Junior teams learning on your budget</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Vanity metrics, no accountability for results</li>
+        </ul>
+      </div>
+      <div class="diff-card good wm reveal">
+        <h3>KnownLabs</h3>
+        <ul>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>100% custom-built design, made for your brand</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>One senior team — design, build and growth together</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Founder-led on every project, no handoffs</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Every page engineered to convert — honestly reported</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="block" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="kicker">How we work</div>
+      <h2>From first call to <span class="grad">launch.</span></h2>
+      <p>A simple, transparent process — you always know what's happening and what's next.</p>
+    </div>
+    <div class="prows">
+      <div class="prow reveal"><span class="pnum">01</span><h3>Discover</h3><p>We dig into your business, audience, and goals on a free intro call.</p></div>
+      <div class="prow reveal"><span class="pnum">02</span><h3>Design</h3><p>Wireframes to polished UI — you review and approve every screen.</p></div>
+      <div class="prow reveal"><span class="pnum">03</span><h3>Build</h3><p>Development, content, and SEO — engineered clean, tested thoroughly.</p></div>
+      <div class="prow reveal"><span class="pnum">04</span><h3>Launch &amp; Grow</h3><p>We launch with you — and stick around for support after go-live.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="block" id="testimonials" data-testimonials-wrap>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="kicker">Testimonials</div>
+      <h2>What clients <span class="grad">say.</span></h2>
+    </div>
+    <div class="testi-grid" data-testimonials></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="block" id="faq" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="kicker">FAQ</div>
+      <h2>Questions, <span class="grad">answered.</span></h2>
+    </div>
+    <div class="faq-list" data-faqs>
+      <div class="faq-item reveal">
+        <button class="faq-q">What services does KnownLabs offer? <span class="ic"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Website development, UI/UX design, app development, SEO, social media management, and video editing — all under one roof, so you never have to coordinate multiple vendors.</p></div>
+      </div>
+      <div class="faq-item reveal d1">
+        <button class="faq-q">How do we start a project? <span class="ic"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Message us on WhatsApp or fill the contact form below. We'll schedule a free intro call to understand your goals, then share a clear proposal with scope and pricing.</p></div>
+      </div>
+      <div class="faq-item reveal d2">
+        <button class="faq-q">How long does a typical project take? <span class="ic"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>It depends on scope — a landing page is quicker than a full web app. After our intro call we give you a realistic timeline in the proposal, and we stick to it.</p></div>
+      </div>
+      <div class="faq-item reveal d3">
+        <button class="faq-q">Do you work with clients outside Bengaluru? <span class="ic"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Yes — we're fully set up for remote collaboration with clients across India and beyond, with regular video check-ins and shared progress boards.</p></div>
+      </div>
+      <div class="faq-item reveal d4">
+        <button class="faq-q">Will I be able to update the site myself later? <span class="ic"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+        <div class="faq-a"><p>Where it makes sense, we build on easy-to-manage setups and hand over with a walkthrough. And if you'd rather not touch it, we offer ongoing maintenance.</p></div>
+      </div>
+    </div>
+    <div class="center-row reveal"><a class="btn btn-ghost" href="faq.html">All FAQs <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <div class="kicker">Contact</div>
+      <h2>Let's build something <span class="grad">worth knowing.</span></h2>
+      <p>Tell us about your project — we personally read and reply to every inquiry.</p>
+    </div>
+    <div class="ccard reveal">
+      <div class="ccard-side">
+        <div class="kicker">Get in touch</div>
+        <h3>Talk to us <span class="it">directly.</span></h3>
+        <p>Fastest response on WhatsApp — or send the form and we'll get back to you personally.</p>
+        <div class="c-row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg></span>
+          <div><b>WhatsApp</b><span>+91 98350 59241</span></div>
+        </div>
+        <div class="c-row">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><b>Based in</b><span>Bengaluru, India · working across India</span></div>
+        </div>
+        <div class="c-row">
+          <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+          <div><b>Availability</b><span>Now accepting project inquiries</span></div>
+        </div>
+        <a class="btn btn-amber ccard-wa" href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">Chat on WhatsApp <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <div class="ccard-badges"><span>Replies within 24 hrs</span><span>Free intro call</span></div>
+      </div>
+      <form class="ccard-form" id="contact-form">
+        <h3>Send an inquiry</h3>
+        <p>Two minutes — that's all it takes to start.</p>
+        <div class="f-row">
+          <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" placeholder="Aarav Sharma" required></div>
+          <div class="field"><label for="cf-contact">Email or phone</label><input id="cf-contact" name="contact" type="text" placeholder="you@example.com" required></div>
+        </div>
+        <div class="field"><label for="cf-service">What do you need?</label>
+          <select id="cf-service" name="service">
+            <option>Website Development</option><option>UI/UX Design</option><option>App Development</option>
+            <option>SEO</option><option>Social Media Management</option><option>Video Editing</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="cf-msg">Project details</label><textarea id="cf-msg" name="message" placeholder="Tell us about your goals, timeline, and anything else that matters." required></textarea></div>
+        <button class="btn btn-amber" type="submit" style="width:100%;justify-content:center">Send inquiry <span class="ic"><svg viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span></button>
+        <p id="form-note" style="margin-top:14px;font-size:.88rem;color:var(--dim);text-align:center"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <img class="logo logo-l" src="assets/img/logo-k.png" alt="KnownLabs logo">
+        <img class="logo logo-d" src="assets/img/logo-k-white.png" alt="" aria-hidden="true">
+        <div class="f-word">Known<span class="labs">Labs</span><span class="dot">.</span></div>
+        <p>A full-stack digital agency — design, technology, and growth under one roof.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="f-links">
+          <li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li><li><a href="projects.html">Projects</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul class="f-links">
+          <li><a href="founder.html">Founder</a></li><li><a href="faq.html">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul class="f-links">
+          <li><a href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#contact">Send an inquiry</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© <span data-year>2026</span> KnownLabs. All rights reserved.</span>
+      <span>Designed &amp; built by Known<span style="color:var(--amber)">Labs</span><span style="color:var(--amber)">.</span></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919835059241?text=Hi%20KnownLabs!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a11.6 11.6 0 0 0 4.5 4.2c1.7.8 2.4.9 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.1-.5-.2z"/></svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/supabase-client.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
